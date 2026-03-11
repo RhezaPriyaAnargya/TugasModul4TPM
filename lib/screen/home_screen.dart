@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'pyramid_screen.dart'; // Pastikan file ini ada di folder yang sama
+import 'sum_input_screen.dart';
+import 'number_check_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -18,7 +20,8 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch, // Membuat tombol memanjang penuh
+            crossAxisAlignment:
+                CrossAxisAlignment.stretch, // Membuat tombol memanjang penuh
             children: [
               const Text(
                 'Pilih Menu:',
@@ -31,47 +34,82 @@ class HomeScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Menu Data Kelompok belum dibuat')),
+                    const SnackBar(
+                      content: Text('Menu Data Kelompok belum dibuat'),
+                    ),
                   );
                 },
-                style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(16)),
-                child: const Text('1. Data Kelompok', style: TextStyle(fontSize: 16)),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.all(16),
+                ),
+                child: const Text(
+                  '1. Data Kelompok',
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
               const SizedBox(height: 16), // Jarak antar tombol
-
               // 2. Tombol Penjumlahan & Pengurangan
               ElevatedButton(
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Menu Kalkulator belum dibuat')),
+                    const SnackBar(
+                      content: Text('Menu Kalkulator belum dibuat'),
+                    ),
                   );
                 },
-                style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(16)),
-                child: const Text('2. Penjumlahan & Pengurangan', style: TextStyle(fontSize: 16)),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.all(16),
+                ),
+                child: const Text(
+                  '2. Penjumlahan & Pengurangan',
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
               const SizedBox(height: 16),
 
               // 3. Tombol Ganjil Genap & Prima
               ElevatedButton(
                 onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Menu Ganjil Genap belum dibuat')),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CekBilanganScreen(),
+                    ),
                   );
                 },
-                style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(16)),
-                child: const Text('3. Ganjil Genap & Prima', style: TextStyle(fontSize: 16)),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.all(16),
+                  backgroundColor: Colors
+                      .blue[800], // Warnanya sedikit lebih gelap agar beda
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text(
+                  '3. Ganjil Genap & Prima',
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
               const SizedBox(height: 16),
 
               // 4. Tombol Jumlah Total Angka
               ElevatedButton(
                 onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Menu Total Angka belum dibuat')),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => JumlahTotalAngkaScreen(),
+                    ),
                   );
                 },
-                style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(16)),
-                child: const Text('4. Jumlah Total Angka Input', style: TextStyle(fontSize: 16)),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.all(16),
+                  backgroundColor: Colors
+                      .blue[800], // Warnanya sedikit lebih gelap agar beda
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text(
+                  '4. Jumlah Total Angka Input',
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
               const SizedBox(height: 16),
 
@@ -79,11 +117,18 @@ class HomeScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Menu Stopwatch belum dibuat')),
+                    const SnackBar(
+                      content: Text('Menu Stopwatch belum dibuat'),
+                    ),
                   );
                 },
-                style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(16)),
-                child: const Text('5. Stopwatch', style: TextStyle(fontSize: 16)),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.all(16),
+                ),
+                child: const Text(
+                  '5. Stopwatch',
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
               const SizedBox(height: 16),
 
@@ -92,15 +137,21 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const PyramidScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const PyramidScreen(),
+                    ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(16),
-                  backgroundColor: Colors.blue[800], // Warnanya sedikit lebih gelap agar beda
+                  backgroundColor: Colors
+                      .blue[800], // Warnanya sedikit lebih gelap agar beda
                   foregroundColor: Colors.white,
                 ),
-                child: const Text('6. Hitung Luas & Volume Piramid', style: TextStyle(fontSize: 16)),
+                child: const Text(
+                  '6. Hitung Luas & Volume Piramid',
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
             ],
           ),
