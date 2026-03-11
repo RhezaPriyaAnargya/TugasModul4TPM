@@ -8,14 +8,11 @@ class JumlahTotalAngkaScreen extends StatefulWidget {
 class _JumlahTotalAngkaScreenState extends State<JumlahTotalAngkaScreen> {
   final TextEditingController _deretAngkaController = TextEditingController();
   int _totalJumlah = 0;
-  bool _sudahDihitung =
-      false; // Tambahan untuk menyembunyikan kotak hasil sebelum tombol ditekan
+  bool _sudahDihitung = false;
 
-  // Fungsi hitung total (Logika Tetap Sama)
   void _hitungTotal() {
     String input = _deretAngkaController.text;
 
-    // Memisahkan input berdasarkan spasi atau koma
     List<String> listAngkaString = input.split(RegExp(r'[\s,]+'));
 
     int sementaraTotal = 0;
@@ -29,22 +26,21 @@ class _JumlahTotalAngkaScreenState extends State<JumlahTotalAngkaScreen> {
 
     setState(() {
       _totalJumlah = sementaraTotal;
-      _sudahDihitung = true; // Tandai bahwa perhitungan sudah dilakukan
+      _sudahDihitung = true;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          Colors.grey[100], // Background senada dengan halaman pertama
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text(
           'Jumlah Total Angka',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: Colors.blue, // Tema warna biru
+        backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         elevation: 0,
       ),
@@ -52,7 +48,6 @@ class _JumlahTotalAngkaScreenState extends State<JumlahTotalAngkaScreen> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            // Bagian Input
             Card(
               elevation: 4,
               shape: RoundedRectangleBorder(
@@ -62,11 +57,7 @@ class _JumlahTotalAngkaScreenState extends State<JumlahTotalAngkaScreen> {
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: [
-                    Icon(
-                      Icons.functions,
-                      size: 60,
-                      color: Colors.blue,
-                    ), // Ikon Sigma/Matematika
+                    Icon(Icons.functions, size: 60, color: Colors.blue),
                     SizedBox(height: 16),
                     TextField(
                       controller: _deretAngkaController,
@@ -115,10 +106,9 @@ class _JumlahTotalAngkaScreenState extends State<JumlahTotalAngkaScreen> {
             ),
             SizedBox(height: 24),
 
-            // Bagian Hasil (Hanya muncul jika tombol sudah ditekan)
             if (_sudahDihitung)
               Card(
-                color: Colors.blue[50], // Biru muda
+                color: Colors.blue[50],
                 elevation: 2,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
@@ -148,7 +138,7 @@ class _JumlahTotalAngkaScreenState extends State<JumlahTotalAngkaScreen> {
                           Text(
                             '$_totalJumlah',
                             style: TextStyle(
-                              fontSize: 24, // Dibuat lebih besar agar menonjol
+                              fontSize: 24,
                               fontWeight: FontWeight.bold,
                               color: Colors.blue[900],
                             ),

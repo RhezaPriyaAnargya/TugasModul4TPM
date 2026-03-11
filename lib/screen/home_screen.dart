@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'pyramid_screen.dart'; // Pastikan file ini ada di folder yang sama
 import 'sum_input_screen.dart';
 import 'number_check_screen.dart';
+import 'stopwatch_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -43,7 +44,7 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                 ),
                 child: const Text(
-                  '1. Data Kelompok',
+                  'Data Kelompok',
                   style: TextStyle(fontSize: 16),
                 ),
               ),
@@ -61,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                 ),
                 child: const Text(
-                  '2. Penjumlahan & Pengurangan',
+                  'Penjumlahan & Pengurangan',
                   style: TextStyle(fontSize: 16),
                 ),
               ),
@@ -84,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                   foregroundColor: Colors.white,
                 ),
                 child: const Text(
-                  '3. Ganjil Genap & Prima',
+                  'Ganjil Genap & Prima',
                   style: TextStyle(fontSize: 16),
                 ),
               ),
@@ -107,7 +108,7 @@ class HomeScreen extends StatelessWidget {
                   foregroundColor: Colors.white,
                 ),
                 child: const Text(
-                  '4. Jumlah Total Angka Input',
+                  'Jumlah Total Angka Input',
                   style: TextStyle(fontSize: 16),
                 ),
               ),
@@ -116,19 +117,18 @@ class HomeScreen extends StatelessWidget {
               // 5. Tombol Stopwatch
               ElevatedButton(
                 onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Menu Stopwatch belum dibuat'),
-                    ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => StopwatchScreen()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(16),
+                  backgroundColor: Colors
+                      .blue[800], // Warnanya sedikit lebih gelap agar beda
+                  foregroundColor: Colors.white,
                 ),
-                child: const Text(
-                  '5. Stopwatch',
-                  style: TextStyle(fontSize: 16),
-                ),
+                child: const Text('Stopwatch', style: TextStyle(fontSize: 16)),
               ),
               const SizedBox(height: 16),
 
@@ -149,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                   foregroundColor: Colors.white,
                 ),
                 child: const Text(
-                  '6. Hitung Luas & Volume Piramid',
+                  'Hitung Luas & Volume Piramid',
                   style: TextStyle(fontSize: 16),
                 ),
               ),
