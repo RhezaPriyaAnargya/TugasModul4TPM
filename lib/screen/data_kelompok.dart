@@ -26,7 +26,7 @@ class GroupDataScreen extends StatelessWidget {
                 child: Icon(Icons.person, color: Colors.white),
               ),
               title: Text(
-                'Dimas',
+                'Wini Dimas Muharromsyah',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               subtitle: Text('NIM: 123230007', style: TextStyle(fontSize: 14)),
@@ -44,7 +44,7 @@ class GroupDataScreen extends StatelessWidget {
                 child: Icon(Icons.person, color: Colors.white),
               ),
               title: Text(
-                'Rheza',
+                'Rheza Priya Anargya',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               subtitle: Text('NIM: 123230032', style: TextStyle(fontSize: 14)),
@@ -62,7 +62,7 @@ class GroupDataScreen extends StatelessWidget {
                 child: Icon(Icons.person, color: Colors.white),
               ),
               title: Text(
-                'Bima',
+                'Bima Putra F',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               subtitle: Text('NIM: 123230003', style: TextStyle(fontSize: 14)),
@@ -80,7 +80,7 @@ class GroupDataScreen extends StatelessWidget {
                 child: Icon(Icons.person, color: Colors.white),
               ),
               title: Text(
-                'Fikar',
+                'Rachman Zulfikar ',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               subtitle: Text('NIM: 123230038', style: TextStyle(fontSize: 14)),
