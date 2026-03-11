@@ -10,7 +10,6 @@ class _CekBilanganScreenState extends State<CekBilanganScreen> {
   String _hasilGanjilGenap = '';
   String _hasilPrima = '';
 
-  // Fungsi cek prima (Logika Tetap Sama)
   bool isPrima(int n) {
     if (n <= 1) return false;
     for (int i = 2; i * i <= n; i++) {
@@ -24,10 +23,8 @@ class _CekBilanganScreenState extends State<CekBilanganScreen> {
 
     if (angka != null) {
       setState(() {
-        // Cek Ganjil Genap
         _hasilGanjilGenap = (angka % 2 == 0) ? 'Genap' : 'Ganjil';
 
-        // Cek Prima
         _hasilPrima = isPrima(angka)
             ? 'Bilangan Prima'
             : 'Bukan Bilangan Prima';
@@ -43,24 +40,21 @@ class _CekBilanganScreenState extends State<CekBilanganScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          Colors.grey[100], // Warna background agak abu-abu agar Card terlihat
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text(
           'Cek Bilangan',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
-        backgroundColor: Colors.blue, // Diubah ke Biru
+        backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         elevation: 0,
       ),
       body: SingleChildScrollView(
-        // Mencegah error overflow saat keyboard muncul
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            // Bagian Input
             Card(
               elevation: 4,
               shape: RoundedRectangleBorder(
@@ -70,11 +64,7 @@ class _CekBilanganScreenState extends State<CekBilanganScreen> {
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: [
-                    Icon(
-                      Icons.calculate,
-                      size: 60,
-                      color: Colors.blue,
-                    ), // Diubah ke Biru
+                    Icon(Icons.calculate, size: 60, color: Colors.blue),
                     SizedBox(height: 16),
                     TextField(
                       controller: _angkaController,
@@ -85,28 +75,24 @@ class _CekBilanganScreenState extends State<CekBilanganScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                       decoration: InputDecoration(
-                        labelText:
-                            'Masukkan Sebuah Angka', // Ditambahkan warna biru
+                        labelText: 'Masukkan Sebuah Angka',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                            width: 2,
-                          ), // Diubah ke Biru
+                          borderSide: BorderSide(color: Colors.blue, width: 2),
                         ),
                       ),
                     ),
                     SizedBox(height: 20),
                     SizedBox(
-                      width: double.infinity, // Tombol memenuhi lebar layar
+                      width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
                         onPressed: _cekBilangan,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue, // Diubah ke Biru
+                          backgroundColor: Colors.blue,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
@@ -127,10 +113,9 @@ class _CekBilanganScreenState extends State<CekBilanganScreen> {
             ),
             SizedBox(height: 24),
 
-            // Bagian Hasil (Hanya muncul jika sudah ada hasil)
             if (_hasilGanjilGenap.isNotEmpty)
               Card(
-                color: Colors.blue[50], // Diubah ke Biru muda
+                color: Colors.blue[50],
                 elevation: 2,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
@@ -145,15 +130,11 @@ class _CekBilanganScreenState extends State<CekBilanganScreen> {
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Colors.blue[800],
-                        ), // Diubah ke Biru tua
+                        ),
                       ),
-                      Divider(
-                        color: Colors.blue[200],
-                        thickness: 1.5,
-                      ), // Diubah ke Biru
+                      Divider(color: Colors.blue[200], thickness: 1.5),
                       SizedBox(height: 10),
 
-                      // Baris Ganjil/Genap
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -176,7 +157,6 @@ class _CekBilanganScreenState extends State<CekBilanganScreen> {
                       ),
                       SizedBox(height: 12),
 
-                      // Baris Prima
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -186,8 +166,6 @@ class _CekBilanganScreenState extends State<CekBilanganScreen> {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              // Tetap menggunakan hijau/oranye untuk status prima agar kontras,
-                              // tapi Anda bisa mengubahnya jika ingin full biru.
                               color: _hasilPrima == 'Bilangan Prima'
                                   ? Colors.green[700]
                                   : Colors.orange[800],
