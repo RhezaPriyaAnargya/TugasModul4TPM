@@ -7,7 +7,8 @@ class JumlahTotalAngkaScreen extends StatefulWidget {
 
 class _JumlahTotalAngkaScreenState extends State<JumlahTotalAngkaScreen> {
   final TextEditingController _deretAngkaController = TextEditingController();
-  int _totalJumlah = 0;
+
+  double _totalJumlah = 0.0;
   bool _sudahDihitung = false;
 
   void _hitungTotal() {
@@ -15,10 +16,10 @@ class _JumlahTotalAngkaScreenState extends State<JumlahTotalAngkaScreen> {
 
     List<String> listAngkaString = input.split(RegExp(r'[\s,]+'));
 
-    int sementaraTotal = 0;
+    double sementaraTotal = 0.0;
 
     for (String angkaStr in listAngkaString) {
-      int? angka = int.tryParse(angkaStr);
+      double? angka = double.tryParse(angkaStr);
       if (angka != null) {
         sementaraTotal += angka;
       }
@@ -28,6 +29,13 @@ class _JumlahTotalAngkaScreenState extends State<JumlahTotalAngkaScreen> {
       _totalJumlah = sementaraTotal;
       _sudahDihitung = true;
     });
+  }
+
+  String _formatHasil(double nilai) {
+    if (nilai == nilai.toInt()) {
+      return nilai.toInt().toString();
+    }
+    return nilai.toString();
   }
 
   @override
@@ -64,7 +72,7 @@ class _JumlahTotalAngkaScreenState extends State<JumlahTotalAngkaScreen> {
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         labelText: 'Masukkan deret angka',
-                        hintText: 'Contoh: 10, 20, 30',
+                        hintText: 'Contoh: 10.5, 20, 30.2',
                         prefixIcon: Icon(
                           Icons.format_list_numbered,
                           color: Colors.blue,
@@ -136,7 +144,7 @@ class _JumlahTotalAngkaScreenState extends State<JumlahTotalAngkaScreen> {
                             style: TextStyle(fontSize: 16),
                           ),
                           Text(
-                            '$_totalJumlah',
+                            _formatHasil(_totalJumlah),
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
