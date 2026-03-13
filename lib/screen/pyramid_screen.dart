@@ -15,7 +15,6 @@ class _PyramidScreenState extends State<PyramidScreen> {
   String _hasilVolume = "0.0";
   String _hasilLuas = "0.0";
   
-  // State baru untuk menyimpan detail rumus/langkah perhitungan
   String _detailVolume = "";
   String _detailLuas = "";
 
