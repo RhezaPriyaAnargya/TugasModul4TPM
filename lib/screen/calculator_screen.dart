@@ -12,14 +12,22 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   final TextEditingController _angka1Controller = TextEditingController();
   final TextEditingController _angka2Controller = TextEditingController();
 
-  // Variabel untuk menyimpan hasil perhitungan
   String _hasil = "0";
 
-  // Fungsi gabungan untuk menghitung (menerima parameter jenis operasi)
   void _hitung(String operasi) {
-    // tryParse akan mengubah teks jadi angka. Kalau kosong atau salah ketik huruf, otomatis jadi 0.
-    double angka1 = double.tryParse(_angka1Controller.text) ?? 0;
-    double angka2 = double.tryParse(_angka2Controller.text) ?? 0;
+    double? angka1 = double.tryParse(_angka1Controller.text);
+    double? angka2 = double.tryParse(_angka2Controller.text);
+
+    if (angka1 == null || angka2 == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Masukkan angka yang valid'),
+          backgroundColor: Colors.red, 
+        ),
+      );
+      return; 
+    }
+
     double hasilHitung = 0;
 
     if (operasi == 'tambah') {
@@ -28,10 +36,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       hasilHitung = angka1 - angka2;
     }
 
-    // Memperbarui UI dengan setState
     setState(() {
-      // Mengubah angka kembali menjadi teks untuk ditampilkan
-      // Pengecekan sederhana: jika hasilnya bulat (misal 5.0), tampilkan "5" saja tanpa koma
+      //jika hasilnya bulat (misal 5.0), tampilkan "5" saja
       if (hasilHitung == hasilHitung.toInt()) {
         _hasil = hasilHitung.toInt().toString();
       } else {
@@ -53,7 +59,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Kalkulator Sederhana'),
-        backgroundColor: Colors.blue, // Sesuai tema aplikasimu
+        backgroundColor: Colors.blue, 
         foregroundColor: Colors.white,
       ),
       body: Padding(
@@ -71,7 +77,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             // Input Angka Pertama
             TextField(
               controller: _angka1Controller,
-              keyboardType: TextInputType.number, // Memunculkan keyboard angka di HP
+              keyboardType: TextInputType.number, 
               decoration: const InputDecoration(
                 labelText: 'Angka Pertama',
                 border: OutlineInputBorder(),
@@ -107,14 +113,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(width: 16), // Jarak antar tombol
+                const SizedBox(width: 16), 
                 Expanded(
                   child: ElevatedButton.icon(
                     onPressed: () => _hitung('kurang'),
                     icon: const Icon(Icons.remove),
                     label: const Text('KURANG'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.redAccent, // Warna beda agar terlihat kontras
+                      backgroundColor: Colors.redAccent, 
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
