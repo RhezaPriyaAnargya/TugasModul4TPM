@@ -6,6 +6,7 @@ import 'data_kelompok.dart';
 import 'calculator_screen.dart'; 
 import 'stopwatch_screen.dart';
 import 'login_screen.dart';
+import 'cek_tanggal_lahir_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   
@@ -336,6 +337,13 @@ class HomeScreen extends StatelessWidget {
                       Icons.change_history_rounded, 
                       const PyramidScreen(),
                       Colors.teal.shade600,
+                    ),
+                    _buildModernCard(
+                      context, 
+                      'Cek\nTanggal Lahir', 
+                      Icons.cake_rounded, 
+                      const CekTanggalLahirScreen(),
+                      Colors.pink.shade600,
                     ),
                   ],
                 ),
