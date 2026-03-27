@@ -43,10 +43,11 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
   }
 
   String _formatWaktu() {
-    final durasi = _stopwatch.elapsed;
+    final durasiOffset = const Duration();
+    final durasi = _stopwatch.elapsed + durasiOffset;
     String duaDigit(int n) => n.toString().padLeft(2, "0");
 
-    String jam = duaDigit(durasi.inHours);
+    String jam = duaDigit(durasi.inHours.remainder(24));
     String menit = duaDigit(durasi.inMinutes.remainder(60));
     String detik = duaDigit(durasi.inSeconds.remainder(60));
     String milidetik = (durasi.inMilliseconds.remainder(1000) ~/ 10)
